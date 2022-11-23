@@ -26,6 +26,7 @@ TARGET_BOOTLOADER_BOARD_NAME := G8142
 
 ### KERNEL
 TARGET_KERNEL_CONFIG := lineage-msm8998-yoshino-maple_dsds_defconfig
+TARGET_KERNEL_CONFIG += vendor/debugfs.config
 
 BOARD_KERNEL_CMDLINE += androidboot.hardware=maple_dsds
 
