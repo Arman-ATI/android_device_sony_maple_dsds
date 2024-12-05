@@ -26,7 +26,5 @@ PRODUCT_MODEL := G8142
 PRODUCT_MANUFACTURER := Sony
 
 PRODUCT_BUILD_PROP_OVERRIDES += \
-    PRODUCT_NAME=maple_dsds \
-    PRIVATE_BUILD_DESC="G8142-user 9 47.2.A.10.107 172320177 release-keys"
-
-BUILD_FINGERPRINT := Sony/G8142/G8142:9/47.2.A.10.107/172320177:user/release-keys
+    BuildDesc="G8142-user 9 47.2.A.10.107 172320177 release-keys" \
+    BuildFingerprint=Sony/G8142/G8142:9/47.2.A.10.107/172320177:user/release-keys
