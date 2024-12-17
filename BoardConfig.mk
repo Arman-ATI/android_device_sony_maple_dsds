@@ -29,6 +29,10 @@ TARGET_KERNEL_CONFIG := lineage-msm8998-yoshino-maple_dsds_defconfig
 
 BOARD_KERNEL_CMDLINE += androidboot.hardware=maple_dsds
 
+# Point to the prebuilt kernel
+TARGET_FORCE_PREBUILT_KERNEL := true
+TARGET_PREBUILT_KERNEL := $(DEVICE_PATH)/prebuilt/Image.gz-dtb
+
 ### PARTITIONS
 # See also /proc/partitions on the device
 BOARD_SYSTEMIMAGE_PARTITION_SIZE := 7707033600
