@@ -4,7 +4,7 @@ Device configuration for Sony Xperia XZ Premium dual sim variant (maple_dsds)
 Description
 -----------
 
-This repository is for LineageOS 20.0 on Sony Xperia XZ Premium dual sim variant (maple_dsds).
+This repository is for LineageOS 22.0 on Sony Xperia XZ Premium dual sim variant (maple_dsds).
 
 How to build LineageOS
 ----------------------
@@ -16,33 +16,38 @@ How to build LineageOS
 
 * Initialize the repo:
 
-        repo init -u git://github.com/LineageOS/android.git -b lineage-20.0
+        repo init -u git://github.com/LineageOS/android.git -b lineage-22.0
 
 * Create a local manifest:
 
-        vim .repo/local_manifests/roomservice.xml
+        cd .repo/
+        mkdir local_manifests
+        cd ../
+        nano .repo/local_manifests/roomservice.xml
 
         <?xml version="1.0" encoding="UTF-8"?>
         <manifest>
-            <!-- SONY -->
-            <project name="whatawurst/android_kernel_sony_msm8998" path="kernel/sony/msm8998" remote="github" revision="lineage-20" />
-            <project name="whatawurst/android_device_sony_yoshino-common" path="device/sony/yoshino-common" remote="github" revision="lineage-20" />
-            <project name="whatawurst/android_device_sony_maple_dsds" path="device/sony/maple_dsds" remote="github" revision="lineage-20" />
+            <!-- Device trees -->
+            <project name="Arman-ATI/android_device_sony_yoshino-common" path="device/sony/yoshino-common" remote="github" revision="lineage-22.0" />
+            <project name="Arman-ATI/android_device_sony_maple_dsds" path="device/sony/maple_dsds" remote="github" revision="lineage-22.0" />
 
-            <!-- blobs for maple_dsds -->
-            <project name="whatawurst/android_vendor_sony_yoshino-common" path="vendor/sony/yoshino-common" remote="github" revision="lineage-20" />
-            <project name="whatawurst/android_vendor_sony_maple_dsds" path="vendor/sony/maple_dsds" remote="github" revision="lineage-20" />
+            <!-- Kernel -->
+            <project name="Arman-ATI/android_kernel_sony_msm8998" path="kernel/sony/msm8998" remote="github" revision="lineage-22.0" />
+
+            <!-- vendor blobs -->
+            <project name="Arman-ATI/android_vendor_sony_yoshino-common" path="vendor/sony/yoshino-common" remote="github" revision="lineage-22.0" />
+            <project name="Arman-ATI/android_vendor_sony_maple_dsds" path="vendor/sony/maple_dsds" remote="github" revision="lineage-22.0" />
+            <project name="Arman-ATI/android_vendor_sony_camera" path="vendor/sony/camera" remote="github" revision="lineage-22.0" />
         </manifest>
 
 * Sync the repo:
 
-        repo sync
+        repo sync -c --no-clone-bundle --optimized-fetch --prune --force-sync -j$(nproc --all)
 
 * Setup the environment
 
         source build/envsetup.sh
-        lunch lineage_maple_dsds-userdebug
 
 * Build LineageOS
 
-        make -j8 bacon
+        brunch maple_dsds user
